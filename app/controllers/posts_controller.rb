@@ -5,10 +5,6 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def show
-    @posts = Post.all
-  end
-
   def new
     @posts = Post.all
     @post = Post.new
@@ -30,7 +26,7 @@ class PostsController < ApplicationController
   def update
     @posts = Post.all
     if @post.update_attributes(post_params)
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), notice:  "The evidence for #{@post.title} has been edited."
     else
       render :edit
     end

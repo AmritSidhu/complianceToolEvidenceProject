@@ -38,10 +38,10 @@
         <tr>
           <th class="scenarioWidth"><h3> Scenario </h3></th>
           <th><h3> Comments </h3></th>
-          <th class="viewButtonWidth"><h3> Response post </h3></th>
-          <th class="otherButtonWidth"><h3> Other </h3></th>
-          <th class="deleteButtonWidth"><h3>Delete</h3></th>
-          <th class="deleteButtonWidth"><h3>Edit post</h3></th>
+          <th class="tableLinkWidth"><h3> Image </h3></th>
+          <th class="tableLinkWidth"><h3> Extra </h3></th>
+          <th class="tableLinkWidth"><h3>Edit Post</h3></th>
+          <th class="tableLinkWidth"></th>
         </tr>
       </thead>
       <tbody>
@@ -49,15 +49,14 @@
           <% @posts.each do |post| %>
             <td class="scenarioWidth"><h2><%= post.title %></h2></td>
             <td><h2><%= post.body %></h2></td>
-            <td class="viewButtonWidth"><h2><%= link_to "View post", post.image_url %></h2></td>
-            <td class="otherButtonWidth">
-            <%if !post.image2.url.nil? %>
-              <h2><%= link_to "View File", post.image2_url %></h2></td>
+            <td class="tableLinkWidth"><h2><%= link_to "View", post.image_url %></h2></td>
+            <td class="tableLinkWidth"><%if !post.image2.url.nil? %>
+              <h2><%= link_to "View", post.image2_url %></h2></td>
             <% else %>
               <h2> n/a</h2>
             <% end %>
-            <td class="deleteButtonWidth"><%= button_to "Delete",  post, method: :delete, data: { confirm: "Are you sure you want to delete?" }, :class => 'button-warning' %></td>
-            <td class="scenarioWidth"><%= render @posts[count] %>
+            <td class="tableLinkWidth"><%= render @posts[count] %>
+            <td class="tableLinkWidth"><%= button_to "Delete",  post, method: :delete, data: { confirm: "Are you sure you want to delete?" }, :class => 'button-warning' %></td>
             <%count += 1%></td>
         </tr>
           <% end %>
