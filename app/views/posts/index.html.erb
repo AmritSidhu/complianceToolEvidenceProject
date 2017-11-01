@@ -1,0 +1,68 @@
+<div id="page-container">
+
+  <div class="phase-banner">
+    <p><strong class="phase-tag">ALPHA</strong>
+      <span>Enable services to know what and how they should provide evidence of testing in the compliance tool</span></p>
+  </div>
+
+  <div class="breadcrumbs">
+    <ol role="breadcrumbs">
+      <li><a href="/"> Home </a></li>
+    </ol>
+  </div>
+
+  <div>
+    <h1> Compliance Tool Evidence </h1>
+  </div>
+
+  <% if @posts.count < 9 %> <!-- This will need to be changed depending on the user journey -->
+    <div>
+      <p> Submit your evidence by clicking the button below. Instructions on what needs to be
+          uploaded for each scenario can also be found there. </p>
+      <p><%= link_to 'Add post', new_post_path, :class => "button" %></p>
+    </div>
+  <% else %>
+    <p><strong> Finished! </strong> You have uploaded evidence for each scenario! Feel free to delete a peice of evidence if you wish to re-upload </p>
+  <% end %><br>
+
+  <% if !flash[:notice].blank? %>
+    <div class="panel-border-narrow" aria-hidden="false">
+      <h3><%= flash[:notice] %></h3>
+    </div>
+  <% end %><br>
+
+  <div>
+    <% count = 0 %>
+    <table>
+      <thead>
+        <tr>
+          <th class="scenarioWidth"><h3> Scenario </h3></th>
+          <th><h3> Comments </h3></th>
+          <th class="viewButtonWidth"><h3> Response post </h3></th>
+          <th class="otherButtonWidth"><h3> Other </h3></th>
+          <th class="deleteButtonWidth"><h3>Delete</h3></th>
+          <th class="deleteButtonWidth"><h3>Edit post</h3></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% @posts.each do |post| %>
+            <td class="scenarioWidth"><h2><%= post.title %></h2></td>
+            <td><h2><%= post.body %></h2></td>
+            <td class="viewButtonWidth"><h2><%= link_to "View post", post.image_url %></h2></td>
+            <td class="otherButtonWidth">
+            <%if !post.image2.url.nil? %>
+              <h2><%= link_to "View File", post.image2_url %></h2></td>
+            <% else %>
+              <h2> n/a</h2>
+            <% end %>
+            <td class="deleteButtonWidth"><%= button_to "Delete",  post, method: :delete, data: { confirm: "Are you sure you want to delete?" }, :class => 'button-warning' %></td>
+            <td class="scenarioWidth"><%= render @posts[count] %>
+            <%count += 1%></td>
+        </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

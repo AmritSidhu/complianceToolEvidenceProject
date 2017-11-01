@@ -1,0 +1,57 @@
+<% responses = ["Basic Successful Match Response with LEVEL_1", "Basic Successful Match Response with LEVEL_2","Basic No Match Response",
+                  "No Authentication Context Response", "Authentication Failed Response", "Requester Error Response",
+                  "Account Creation Response with LEVEL_1", "Account Creation Response with LEVEL_2",
+                  "Fraudulent match response with assertions signed by hub"] %>
+
+<% disabledElements = [] %>
+  <% @posts.each do |post| %>
+    <% disabledElements << post.title %>
+  <% end %>
+
+<div>
+  <%= form_for @post, html: { multipart: true } do |f| %>
+    <div class="form-group">
+      <label class="form-label"> Select a scenario name </label>
+      <br><br><br><%= f.select :title, responses, :disabled => disabledElements %><br><br>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label"> Upload a screenshot of the scenario </label><br><br><br>
+      <%= f.file_field :image, :class=>"bigFont" %><br><br>
+      <details role="group">
+        <summary role="button" aria-controls="details-content-0" aria-expanded="true">
+          <span class="summary"> What do I upload? </span></summary>
+        <div class="panel-border-narrow" aria-hidden="false">
+          <p> Only upload a single screenshot showing the scenario that is running. </p>
+        </div>
+      </details>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label"> An extra screenshot or file can be uploaded here </label><br><br><br>
+      <%= f.file_field :image2, :class=>"bigFont" %><br><br>
+      <details role="group">
+        <summary role="button" aria-controls="details-content-0" aria-expanded="true">
+          <span class="summary"> What do I upload? </span></summary>
+        <div class="panel-border-narrow" aria-hidden="false">
+          <p> If you have any other evidence you wish to provide upload a single screenshot or file here. </p>
+        </div>
+      </details>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label"> Include comments or any questions you may have here: </label><br><br><br>
+      <%= f.text_area :body, :class=>"textarea" %><br>
+      <details role="group">
+        <summary role="button" aria-controls="details-content-0" aria-expanded="true">
+          <span class="summary"> What do I comment? </span></summary>
+        <div class="panel-border-narrow" aria-hidden="false">
+          <p> Please ensure all screenshots are annotated with the scenario that is running and please provide a paragraph
+              describing what is happening. If you didn’t run this test, why was it considered unnecessary? </p>
+        </div>
+      </details>
+    </div>
+
+    <%= f.submit "Upload", :class => 'button' %>
+  <% end %>
+</div><br><br><br><br>

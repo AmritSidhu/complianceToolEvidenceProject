@@ -1,0 +1,186 @@
+@import '_typography';
+@import '_grid_layout';
+@import 'design-patterns/_alpha-beta';
+@import 'design-patterns/_buttons';
+@import '_css3';
+@import 'design-patterns/_breadcrumbs';
+@import 'conditionals';
+
+h1 {
+  @include heading-48;
+  font-weight: bold;
+}
+
+h2 {
+  @include core-19($tabular-numbers: true);
+}
+
+h3 {
+  @include core-19;
+  font-weight: bold;
+}
+
+p {
+  @include core-19;
+}
+
+.bigFont {
+  @include core-19;
+}
+
+#page-container {
+  @extend %site-width-container;
+}
+
+.phase-banner {
+  @include phase-banner();
+}
+
+.button {
+  @include button;
+}
+
+.button-secondary {
+  @include button($grey-3);
+}
+
+.button-warning {
+  @include button($red);
+}
+
+table {
+  table-layout:fixed;
+  width:100%;
+}
+
+thead {
+  text-align: left;
+}
+
+td, th {
+  text-transform: none;
+  border-bottom: 1px solid #bfc1c3;
+}
+
+.deleteButtonWidth {
+  width: 11%;
+  text-align: center;
+}
+
+.viewButtonWidth {
+  width: 16.5%;
+  text-align: center;
+}
+
+.otherButtonWidth {
+  width: 14.2%;
+  text-align: center;
+}
+
+.scenarioWidth {
+  padding-right: 1.5em;
+  width: 25%;
+}
+
+
+img {
+  max-width: 98%;
+}
+
+.grid-row {
+  @extend %grid-row;
+  margin-left: 0;
+  .column-third {
+    @include grid-column( 1/3 );
+  }
+  .column-two-thirds {
+    @include grid-column( 2/3 );
+  }
+}
+
+.column-one-half {
+  float: left;
+  width: 50%;
+  position: relative;
+}
+
+.bottomLeft {
+   position: absolute;
+   bottom: 30px;
+   left: 10px;
+}
+
+.breadcrumbs {
+  @include breadcrumbs;
+}
+
+.table-column-with-padding {
+  margin-right: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+details summary {
+  display: inline-block;
+  color: #005ea5;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 0.26316em;
+  @include core-19;
+}
+
+.panel-border-narrow {
+  border-left-width: 5px;
+  box-sizing: border-box;
+  clear: both;
+  border-left-style: solid;
+  border-color: #bfc1c3;
+  padding-left: 0.78947em;
+  padding-top: 0.08947em;;
+  padding-bottom: 0.08947em;;
+}
+
+.form-control {
+  border: 2px solid $black;
+  border-radius: 0;
+  font-size: 19px;
+  line-height: 1.31579;
+}
+
+.form-label {
+  @include heading-24;
+  display: block;
+  float: left;
+  clear: left;
+  font-weight: bold;
+}
+
+.textarea {
+  width: 50%;
+  @include core-19;
+  border: 2px solid #0b0c0c;
+  padding: 5px 4px 4px;
+  display: block;
+  height: 8em;
+}
+
+
+select, input[type="color" i][list] {
+  background-color: #f8f8f8;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #a6a6a6;
+  border-image: initial;
+  @include core-19;
+  width: 50%;
+  margin-top: -5px;
+}
+
+.form-group {
+  margin-bottom: 40px;
+  box-sizing: border-box;
+}
+
+.bottomPadding {
+  padding-bottom: 1.3em;
+}
