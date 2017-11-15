@@ -63,7 +63,12 @@ td, th {
 }
 
 .tableLinkWidth {
-  width: 10.5%;
+  width: 10%;
+  text-align: center;
+}
+
+.tableAdminWidth {
+  width: 12%;
   text-align: center;
 }
 
@@ -142,7 +147,10 @@ details summary {
   display: block;
   float: left;
   clear: left;
-  font-weight: bold;
+  font-family: "nta", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 1.25;
 }
 
 .textarea {
@@ -153,7 +161,6 @@ details summary {
   display: block;
   height: 8em;
 }
-
 
 select, input[type="color" i][list] {
   background-color: #f8f8f8;
@@ -173,4 +180,65 @@ select, input[type="color" i][list] {
 
 .bottomPadding {
   padding-bottom: 1.3em;
+}
+
+.radio-label {
+  height: 60px;
+}
+
+.radio-tag {
+  margin-left: 15px;
+  position: relative;
+  top: 3px;
+}
+
+.check-box {
+  width: 39px;
+  height: 39px;
+  border: 2px solid $black;
+  box-sizing: border-box;
+  border-radius: 100%;
+  cursor: pointer;
+  position: relative;
+  bottom: 4px;
+  float: left;
+}
+
+.check-box:focus {
+  box-shadow: 0 0 0 3pt $yellow;
+}
+
+.control-indicator {
+
+  position: relative;
+  bottom: 30px;
+  width: 39px;
+  height: 39px;
+  background: $white;
+  border-radius: 100%;
+  border: 2px solid $black;
+  cursor: pointer;
+}
+
+.control-indicator:after {
+  content: "";
+  position: relative;
+  color: $black;
+  border: 2px solid $black;
+  left: 6px;
+  top: 6px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: $black;
+  display: none;
+}
+
+.form-label input:checked ~ .control-indicator:after {
+  display: block;
+}
+
+.navright {
+  float: right;
+  margin-top: -77px;
 }

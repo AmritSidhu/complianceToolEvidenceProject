@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  resources :posts
+  get '/posts/admin' => 'posts#admin'
+  get '/posts/:id/user_edit' => 'posts#user_edit', as: :user_edit
+
+
+  resources :posts  #Instead of declaring separate routes for your index, show, new, edit, create, update and destroy actions,
+                    #a resourceful route declares them in a single line of code.
   root to: 'posts#index'
 end

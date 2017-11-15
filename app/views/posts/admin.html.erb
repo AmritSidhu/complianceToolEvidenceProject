@@ -8,28 +8,17 @@
   <div class="breadcrumbs">
     <ol role="breadcrumbs">
       <li><a href="/"> Home </a></li>
-    </ol>
-  </div>
-
-  <div class="breadcrumbs navright">
-    <ol role="breadcrumbs">
       <li><a href="/posts/admin"> Admin Interface </a></li>
     </ol>
   </div>
 
   <div>
-    <h1> Compliance Tool Evidence </h1>
+    <h1> Admin Interface </h1>
   </div>
 
-  <% if @posts.count < 9 %> <!-- This will need to be changed depending on the user journey -->
-    <div>
-      <p> Submit your evidence by clicking the button below. Instructions on what needs to be
-          uploaded for each scenario can also be found there. </p>
-      <p><%= link_to 'Add post', new_post_path, :class => "button" %></p>
-    </div>
-  <% else %>
-    <p><strong> Finished! </strong> You have uploaded evidence for each scenario! Feel free to delete a peice of evidence if you wish to re-upload </p>
-  <% end %><br>
+  <div>
+    <p> Here you can see all the evidence the user has uploaded. Please click on mark to validate that the evidence uploaded for each scenario is acceptable. </p>
+  </div>
 
   <% if !flash[:notice].blank? %>
     <div class="panel-border-narrow" aria-hidden="false">
@@ -46,8 +35,7 @@
           <th><h3> Comments </h3></th>
           <th class="tableLinkWidth"><h3> Image </h3></th>
           <th class="tableLinkWidth"><h3> Extra </h3></th>
-          <th class="tableLinkWidth"></th>
-          <th class="tableLinkWidth"><h3>Admin</h3></th>
+          <th class="tableAdminWidth"><h3>Admin Feedback</h3></th>
         </tr>
       </thead>
       <tbody>
@@ -61,13 +49,8 @@
             <% else %>
               <h2> n/a</h2>
             <% end %>
-            <td class="tableLinkWidth"><p><%= link_to 'Edit', user_edit_path(post) %></p></td>
+            <td class="tableAdminWidth"><%= render @posts[count] %>
             <%count += 1%></td>
-            <td class="tableLinkWidth"><% if post.adminChecked == true %>
-              <p> Valid </p>
-            <% else %>
-              <p> See admin feeback! </p>
-            <% end %></td>
         </tr>
           <% end %>
       </tbody>
