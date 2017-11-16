@@ -1,5 +1,5 @@
 <div>
-  <%= form_for @post, html: { multipart: true } do |f| %>
+  <%= form_for @post, :url => {:action => "/posts/#{params[:id]}/admin"} do |f| %>
 
     <div class="form-group">
       <label class="form-label"> Tick the box if what the user has uploaded for this scenario is valid </label>
@@ -11,12 +11,12 @@
         <span class="radio-tag">Yes</span>
         <div class="control-indicator"></div>
       <% end %>
-
       <%= f.label :no, class: "form-label radio-label" do %>
         <%= f.radio_button :adminChecked, false, class: "check-box" %>
         <span class="radio-tag"> No </span>
         <div class="control-indicator"></div>
       <% end %>
+      <br><br><br><br><br><br>
     </div>
 
     <div class="form-group">
